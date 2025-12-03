@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Hotel Sentiment Analyzer{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center">
+    <div class="col-lg-5 mb-4 mb-lg-0">
+        <div class="card border-0">
+            <div class="card-body">
+                <h2 class="mb-3">Welcome back</h2>
+                <p class="text-muted mb-4">Sign in to access your sentiment dashboards and continue analyzing hotel reviews.</p>
+                <ul class="list-unstyled small text-muted mb-0">
+                    <li class="mb-1">• Track positive, negative, and neutral trends</li>
+                    <li class="mb-1">• Explore batch and dataset-level insights</li>
+                    <li>• Secure access to your saved analyses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Login</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('routes.login') }}">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+                </form>
+                <p class="text-center mb-0 small">
+                    Don't have an account? <a href="{{ url_for('routes.signup') }}">Sign up here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+

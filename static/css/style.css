@@ -1,0 +1,316 @@
+/* Custom Styles for Hotel Sentiment Analyzer */
+
+/* Layout & background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top left, #0b1020 0%, #111827 40%, #1f2937 70%, #111827 100%);
+    color: #fdf6e3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* App shell layout */
+.app-shell {
+    min-height: 100vh;
+}
+
+.app-sidebar {
+    width: 260px;
+    padding: 1.5rem 1.25rem;
+    background: linear-gradient(180deg, #020617, #0b1120);
+    color: #e5e7eb;
+}
+
+.app-main {
+    min-height: 100vh;
+}
+
+.app-content {
+    max-width: 1200px;
+}
+
+/* Centered popup for welcome message */
+.center-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.center-popup-box {
+    background-color: #0f172a;
+    color: #f9fafb;
+    padding: 1.75rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.8);
+    max-width: 420px;
+    width: 90%;
+}
+
+.sidebar-brand {
+    text-decoration: none;
+    color: inherit;
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+}
+
+.sidebar-title {
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+}
+
+.sidebar-nav .nav-link {
+    color: #e5e7eb;
+    padding-left: 0;
+    padding-right: 0;
+    opacity: 0.85;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link:focus {
+    opacity: 1;
+    color: #facc6b;
+}
+
+.sidebar-footer {
+    border-top: 1px solid rgba(148, 163, 184, 0.4);
+    padding-top: 0.75rem;
+}
+
+main {
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: 0.03em;
+    color: #fdf6e3 !important;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #e5e7eb !important;
+    opacity: 0.9;
+    transition: color 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    opacity: 1;
+    color: #facc6b !important;
+    transform: translateY(-1px);
+}
+
+/* Cards */
+.card {
+    background: #0f172a;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    margin-bottom: 1.75rem;
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    font-weight: 600;
+}
+
+.card-header.bg-primary,
+.card-header.bg-success,
+.card-header.bg-info,
+.card-header.bg-dark {
+    background: linear-gradient(120deg, #0b1120, #1d3557);
+    color: #fdf6e3;
+}
+
+/* Hero section */
+.jumbotron {
+    background: radial-gradient(circle at top left, #0b1120 0%, #1d3557 45%, #0f172a 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.jumbotron::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at top, rgba(248, 250, 252, 0.32), transparent 60%);
+    opacity: 0.5;
+}
+
+.jumbotron > * {
+    position: relative;
+    z-index: 1;
+}
+
+.jumbotron .lead {
+    color: #e5e7eb;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 999px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #1d3557, #0b1120);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0f172a, #1d3557);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.55);
+}
+
+.btn-outline-light {
+    border-color: rgba(248, 250, 252, 0.8);
+    color: #f9fafb;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(248, 250, 252, 0.16);
+    color: #facc6b;
+}
+
+.btn-light {
+    background-color: #fdf6e3;
+    color: #111827;
+}
+
+.btn-light:hover {
+    background-color: #e5e7eb;
+}
+
+/* Badges & tables */
+.badge {
+    font-size: 0.8rem;
+    padding: 0.45em 0.85em;
+    border-radius: 999px;
+}
+
+.table {
+    color: #f9fafb;
+}
+
+.table thead th {
+    border-bottom-color: rgba(148, 163, 184, 0.6);
+}
+
+.table tbody tr {
+    border-color: rgba(148, 163, 184, 0.45);
+}
+
+/* Force table cell text (including small tags) to be light on dark backgrounds */
+.table th,
+.table td,
+.table td small {
+    color: #f9fafb !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(15, 23, 42, 0.85);
+}
+
+.table-responsive {
+    border-radius: 0.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+}
+
+/* Forms */
+.form-control,
+.form-select,
+textarea.form-control {
+    background-color: #020617;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.9);
+    color: #fdf6e3;
+}
+
+.form-control::placeholder,
+textarea.form-control::placeholder {
+    color: rgba(148, 163, 184, 0.75);
+}
+
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+    border-color: #1d3557;
+    box-shadow: 0 0 0 0.18rem rgba(37, 99, 235, 0.45);
+    background-color: #020617;
+}
+
+label.form-label {
+    font-weight: 500;
+    color: #4b5563;
+}
+
+/* Alerts & messages */
+.alert {
+    border-radius: 0.85rem;
+    border: 1px solid rgba(148, 163, 184, 0.55);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+}
+
+.alert-success {
+    background-color: rgba(22, 163, 74, 0.08);
+}
+
+.alert-danger,
+.alert-error {
+    background-color: rgba(220, 38, 38, 0.08);
+}
+
+.alert-info {
+    background-color: rgba(59, 130, 246, 0.08);
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    background: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+footer p {
+    color: #e5e7eb;
+}
+
+/* Chart container styling */
+canvas {
+    max-height: 400px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .jumbotron {
+        padding: 2rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
