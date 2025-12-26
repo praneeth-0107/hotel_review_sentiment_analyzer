@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Hotel Sentiment Analyzer{% endblock %}
+
+{% block content %}
+<section class="mb-4">
+    <div class="row justify-content-between align-items-center">
+        <div class="col-md-8">
+            <h2 class="mb-2">Welcome back, {{ current_user.username }} 👋</h2>
+            <p class="text-muted mb-0">Monitor your hotel review sentiment performance and jump into new analyses.</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <a href="{{ url_for('routes.analyze') }}" class="btn btn-primary me-2">New Analysis</a>
+            <a href="{{ url_for('routes.analyze_dataset') }}" class="btn btn-outline-success">Dataset Insights</a>
+        </div>
+    </div>
+</section>
+
+<!-- Statistics Cards -->
+<section class="mb-4">
+    <div class="row g-3">
+        <div class="col-6 col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Total Analyses</p>
+                    <h2 class="mb-0">{{ stats.total }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Positive</p>
+                    <h2 class="text-success mb-0">{{ stats.positive }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Negative</p>
+                    <h2 class="text-danger mb-0">{{ stats.negative }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <p class="text-muted mb-1">Neutral</p>
+                    <h2 class="text-secondary mb-0">{{ stats.neutral }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions -->
+<section class="mb-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card">
+                <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+                    <div class="mb-3 mb-md-0">
+                        <h5 class="mb-1">Quick Actions</h5>
+                        <p class="text-muted mb-0">Choose how you want to explore sentiment today.</p>
+                    </div>
+                    <div class="text-md-end">
+                        <a href="{{ url_for('routes.analyze') }}" class="btn btn-primary me-2 mb-2 mb-md-0">Analyze New Review</a>
+                        <a href="{{ url_for('routes.analyze') }}" class="btn btn-outline-primary me-2 mb-2 mb-md-0">Batch Analysis</a>
+                        <a href="{{ url_for('routes.analyze_dataset') }}" class="btn btn-success">Analyze Real Dataset</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Analyses -->
+<section>
+    <div class="row justify-content-center">
+        <div class="col-lg-11">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">Recent Analyses</h4>
+                </div>
+                <div class="card-body">
+                    {% if recent_analyses %}
+                    <div class="table-responsive" style="max-height: 420px; overflow-y: auto;">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Review</th>
+                                    <th>Sentiment</th>
+                                    <th>Polarity</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for analysis in recent_analyses %}
+                                <tr>
+                                    <td>
+                                        <small>{{ analysis.review_text[:100] }}{% if analysis.review_text|length > 100 %}...{% endif %}</small>
+                                    </td>
+                                    <td>
+                                        {% if analysis.sentiment == 'positive' %}
+                                            <span class="badge bg-success">{{ analysis.sentiment }}</span>
+                                        {% elif analysis.sentiment == 'negative' %}
+                                            <span class="badge bg-danger">{{ analysis.sentiment }}</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">{{ analysis.sentiment }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ analysis.polarity }}</td>
+                                    <td><small>{{ analysis.created_at.strftime('%Y-%m-%d %H:%M') }}</small></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-muted mb-0">No analyses yet. <a href="{{ url_for('routes.analyze') }}">Start analyzing reviews!</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
