@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Hotel Sentiment Analyzer{% endblock %}
+
+{% block content %}
+<div class="row align-items-center">
+    <div class="col-lg-12">
+        <div class="jumbotron text-white p-5 mb-4">
+            <h1 class="display-4 mb-3">
+                 Hotel Guest Sentiment Analysis
+            </h1>
+            <p class="lead mb-3">Apply Natural Language Processing to interpret guest feedback and gain takeaways.</p>
+            <p class="mb-4">Use sentiment analysis on guest reviews to clearly identify concerns, track satisfaction levels, and guide improvements.</p>
+            {% if not current_user.is_authenticated %}
+            <a class="btn btn-light btn-lg" href="{{ url_for('routes.signup') }}" role="button">Get Started</a>
+            <a class="btn btn-outline-light btn-lg" href="{{ url_for('routes.login') }}" role="button">Login</a>
+            {% else %}
+            <a class="btn btn-light btn-lg" href="{{ url_for('routes.analyze') }}" role="button">Analyze Reviews</a>
+            <a class="btn btn-outline-light btn-lg" href="{{ url_for('routes.dashboard') }}" role="button">Dashboard</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4>Key Features</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"> User authentication (Sign up/Login)</li>
+                            <li class="mb-2"> Single review sentiment analysis</li>
+                            <li class="mb-2"> Batch review processing</li>
+                            <li class="mb-2"> Real-time sentiment classification</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li class="mb-2"> Interactive visualizations</li>
+                            <li class="mb-2"> Analysis history tracking</li>
+                            <li class="mb-2"> User dashboard with statistics</li>
+                            <li class="mb-2"> Export and download results</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
